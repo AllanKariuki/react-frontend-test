@@ -1,40 +1,19 @@
-import React from 'react';
+import React, {useEffect } from 'react';
 import { useState } from 'react';
+import axios from 'axios';
 import Table from "../components/Table";
 
 const Home = () => {
+    const [ data, setData ] = useState([])
     const url = 'http://127.0.0.1:8000/users/userdata/'
-    fetch(url)
-        .then(response => {
-            if(!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log(data);
-        })
-        .catch(error => {
-            console.log(error);
-        })
-    const data = [
-        {
-            id: 1,
-            first_name: "John",
-            last_name: "Doe",
-            town: "Nairobi",
-            age: 25,
-            gender: "Male"
-        },
-        {
-            id: 2,
-            first_name: "Jane",
-            last_name: "Doe",
-            town: "Nairobi",
-            age: 28,
-            gender: "Male"
+    useEffect(() => {
+        const fetchData = async (err) => {
+            const response = await axios.get(url)
+            setData(response.data.data)
         }
-    ]
+        fetchData()
+    }, [])
+
     return (
         <div>
             <h1 className="text-center text-2xl m-10">Welcome</h1>
