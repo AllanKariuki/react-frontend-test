@@ -2,17 +2,34 @@ import React, {useEffect } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
 import Table from "../components/Table";
+import Swal from 'sweetalert2';
 
 const Home = () => {
     const [ data, setData ] = useState([])
     const url = 'http://127.0.0.1:8000/users/userdata/'
-    useEffect(() => {
-        const fetchData = async (err) => {
+
+    const fetchData = async (err) => {
             const response = await axios.get(url)
             setData(response.data.data)
-        }
+    }
+
+    useEffect(() => {
         fetchData()
     }, [])
+
+    const deleteData = (id) => {
+        const url = `http://127.0.0.1:8000/users/userdata/${id}/`
+        const response = axios.delete(url).then(() => {
+           Swal.fire({
+                title: 'Success',
+                text: 'Deleted',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then(() => {
+                fetchData();
+           });
+        });
+        }
 
     return (
         <div>
@@ -42,7 +59,8 @@ const Home = () => {
                             <div className="w-1/6">{row.age}</div>
                             <div className="w-1/6">{row.town}</div>
                             <div className="w-1/6">{row.gender}</div>
-                            <div className="w-1/6">
+                            <div className="w-1/6 x-space-4">
+                                <button className="rounded-2xl bg-red-400 hover:bg-red-500 py-1 px-4" onClick={() => deleteData(row.id)}>Delete</button>
                             </div>
                         </div>
                         ))
