@@ -1,11 +1,13 @@
 import React, {useEffect } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
-import Table from "../components/Table";
 import Swal from 'sweetalert2';
+import {FaTrash, FaPen} from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
     const [ data, setData ] = useState([])
+    const navigate = useNavigate()
     const url = 'http://127.0.0.1:8000/users/userdata/'
 
     const fetchData = async (err) => {
@@ -16,6 +18,10 @@ const Home = () => {
     useEffect(() => {
         fetchData()
     }, [])
+
+    const editData = (id) => {
+        navigate(`/form/${id}`);
+    }
 
     const deleteData = (id) => {
         const url = `http://127.0.0.1:8000/users/userdata/${id}/`
@@ -59,8 +65,14 @@ const Home = () => {
                             <div className="w-1/6">{row.age}</div>
                             <div className="w-1/6">{row.town}</div>
                             <div className="w-1/6">{row.gender}</div>
-                            <div className="w-1/6 x-space-4">
-                                <button className="rounded-2xl bg-red-400 hover:bg-red-500 py-1 px-4" onClick={() => deleteData(row.id)}>Delete</button>
+                            <div className="w-1/6 space-x-3">
+                                <button onClick={() => editData(row.id)}>
+                                    <FaPen color="action"/>
+                                </button>
+                                <button className="btn-danger"
+                                    onClick={() => deleteData(row.id)}>
+                                    <FaTrash color="action"/>
+                                </button>
                             </div>
                         </div>
                         ))

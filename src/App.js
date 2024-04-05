@@ -5,6 +5,7 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import DataForm from "./pages/DataForm";
 import Sample from "./Sample";
+import EditData from "./pages/EditData";
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/form" element={<DataForm />} />
-          <Route path="/sample" element={<Sample />} />
+        <Route path="/sample" element={<Sample />} />
+        <Route path="/form/:id" element={<EditData />} />
       </Routes>
     </Router>
   );
