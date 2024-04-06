@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 const Home = () => {
     const [ data, setData ] = useState([])
     const navigate = useNavigate()
-    const url = 'http://127.0.0.1:8000/users/userdata/'
+    const url = 'https://django-backend-test.onrender.com/users/userdata/'
 
     const fetchData = async (err) => {
             const response = await axios.get(url)

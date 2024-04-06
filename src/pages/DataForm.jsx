@@ -5,7 +5,7 @@ import { useNavigate  } from 'react-router-dom'
 
 const Form = () => {
     const [ state, setState ] = useState({})
-    const url = "http://127.0.0.1:8000/users/userdata/"
+    const url = "https://django-backend-test.onrender.com/users/userdata/"
     const navigate = useNavigate()
     const handleSubmit = async (e) => {
         e.preventDefault()

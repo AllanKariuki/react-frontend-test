@@ -11,7 +11,7 @@ const EditData = () => {
    useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://127.0.0.1:8000/users/userdata/${id}/`);
+                const response = await axios.get(`https://django-backend-test.onrender.com/users/userdata/${id}/`);
                 setState(response.data.data);
             } catch (err) {
                 Swal.fire({

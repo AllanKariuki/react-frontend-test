@@ -6,7 +6,7 @@ import axios from 'axios';
 const Register = () => {
 
     const [ state, setState ] = useState({})
-    const url = "http://127.0.0.1:8000/accounts/signup/"
+    const url = "https://django-backend-test.onrender.com/accounts/signup/"
     const navigate = useNavigate()
     const handleSubmit = async (e) => {
         e.preventDefault()
