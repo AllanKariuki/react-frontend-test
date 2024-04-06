@@ -29,7 +29,7 @@ const EditData = () => {
 
    const handleEdit = async (e) => {
        e.preventDefault();
-       const url = `http://127.0.0.1:8000/users/userdata/${id}/`;
+       const url = `https://django-backend-test.onrender.com/users/userdata/${id}/`;
        try {
             const response = await axios.put(url, state)
             const message = response.data.message
