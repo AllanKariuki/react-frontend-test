@@ -23,6 +23,9 @@ const Home = () => {
         navigate(`/form/${id}`);
     }
 
+    const onClickAdd = () => {
+        navigate('/form');
+    }
     const deleteData = (id) => {
         const url = `http://127.0.0.1:8000/users/userdata/${id}/`
         const response = axios.delete(url).then(() => {
@@ -49,6 +52,7 @@ const Home = () => {
             shadow-md overflow-hidden
             md:max-w-2xl m-3">
                 <h3 className="text-left text-xl px-2 py-2">User Information</h3>
+                <button className="rounded-xl py-1 px-3 bg-blue-300" onClick={onClickAdd}>Add</button>
                 <div className="flex justify-between px-2 py-2 bg-grey-50">
                     <div className="w-1/6">First Name</div>
                     <div className="w-1/6">Last Name</div>

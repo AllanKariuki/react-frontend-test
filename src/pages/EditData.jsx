@@ -39,7 +39,7 @@ const EditData = () => {
                 icon: 'success',
                 confirmButtonText: 'Ok'
             }).then(() => {
-                navigate('/');
+                navigate('/home');
             });
         } catch (err) {
             console.error(err)

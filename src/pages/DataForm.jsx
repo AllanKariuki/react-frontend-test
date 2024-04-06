@@ -18,7 +18,7 @@ const Form = () => {
                 icon: 'success',
                 confirmButtonText: 'Ok'
             }).then(() => {
-                navigate('/');
+                navigate('/home');
             });
         } catch (err) {
             console.error(err)
@@ -45,7 +45,7 @@ const Form = () => {
                         <input
                             type="text"
                             placeholder="First Name"
-                            onChange = {(e) => setState({...state, first_name: e.target.value})}
+                            onChange={(e) => setState({...state, first_name: e.target.value})}
                             className="w-full p-2 border border-none outline outline-0 bg-slate-100 rounded mt-2"
                         />
                         <input
@@ -57,18 +57,18 @@ const Form = () => {
                         <input
                             type="number"
                             placeholder="Age"
-                            onChange = {(e) => setState({...state, age: e.target.value})}
+                            onChange={(e) => setState({...state, age: e.target.value})}
                             className="w-full p-2 border border-none outline outline-0 bg-slate-100 rounded mt-2"
                         />
                         <input
                             type="text"
                             placeholder="Town"
-                            onChange = {(e) => setState({...state, town: e.target.value})}
+                            onChange={(e) => setState({...state, town: e.target.value})}
                             className="w-full p-2 border border-none outline outline-0 bg-slate-100 rounded mt-2"
                         />
                         <select
                             className="w-full p-2 border border-none outline outline-0 bg-slate-100 rounded mt-2"
-                            onChange = {(e) => setState({...state, gender: e.target.value})}
+                            onChange={(e) => setState({...state, gender: e.target.value})}
                         >
                             <option value="" selected disabled>Select Gender</option>
                             <option value="Male">Male</option>
@@ -78,6 +78,9 @@ const Form = () => {
                             type="submit"
                             className="w-full mt-5 py-2 px-4 bg-indigo-500 text-white rounded mt-2">Submit
                         </button>
+                        <p className="text-slate-500 text-center">
+                            Go <a href="/home" className="text-indigo-500">back</a>
+                        </p>
                     </form>
                 </div>
             </div>

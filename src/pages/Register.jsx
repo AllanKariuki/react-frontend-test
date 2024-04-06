@@ -1,6 +1,30 @@
-import React from 'react'
+import { useState } from 'react';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Register = () => {
+
+    const [ state, setState ] = useState({})
+    const url = "http://127.0.0.1:8000/accounts/signup/"
+    const navigate = useNavigate()
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        try {
+            const response = await axios.post(url, state)
+            Swal.fire({
+                title: 'Success',
+                text: 'Register successful',
+                icon: 'success',
+                confirmButtonText: 'Ok'
+            }).then(() => {
+                navigate('/home');
+            });
+        } catch (err) {
+            console.error(err)
+        }
+    }
+
     return (
         <div className="
         max-w-md mx-auto
@@ -18,15 +42,17 @@ const Register = () => {
                     font-semibold text-center"
                     >Register Form
                     </div>
-                    <form className="mt-2 xl:ml-10 md:mx-auto w-full">
+                    <form className="mt-2 xl:ml-10 md:mx-auto w-full" onSubmit={handleSubmit}>
                         <input
                             type="email"
                             placeholder="Email"
+                            onChange={(e) => setState({...state, email: e.target.value})}
                             className="w-full p-2 border border-none outline outline-0 bg-slate-100 rounded mt-2"
                         />
                         <input
                             type="password"
                             placeholder="Password"
+                            onChange={(e) => setState({...state, password: e.target.value})}
                             className="w-full p-2 border border-none outline outline-0 bg-slate-100 rounded mt-2"
                         />
                         <button type="submit"
