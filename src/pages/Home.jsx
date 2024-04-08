@@ -42,6 +42,9 @@ const Home = () => {
 
     return (
         <div>
+            <div className="flex justify-end">
+                <button className="btn-primary" onClick={() => navigate('/login')}>Logout</button>
+            </div>
             <h1 className="text-center text-2xl m-10">Welcome</h1>
             {/*<Table data={data} />*/}
             <div className="
