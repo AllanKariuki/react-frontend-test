@@ -6,7 +6,7 @@ import axios from 'axios';
 
 const Login = () => {
     const [ state, setState ] = useState({})
-    const url = "https://django-backend-test.onrender.com/accounts/login/";
+    const url = "http://localhost:8000/accounts/login/";
     const navigate = useNavigate();
     const handleSubmit = async (e) => {
         e.preventDefault()

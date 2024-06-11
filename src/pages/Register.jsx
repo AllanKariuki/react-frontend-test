@@ -6,7 +6,7 @@ import axios from 'axios';
 const Register = () => {
 
     const [ state, setState ] = useState({})
-    const url = "https://django-backend-test.onrender.com/accounts/signup/"
+    const url = "http://localhost:8000/accounts/register/"
     const navigate = useNavigate()
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -44,9 +44,9 @@ const Register = () => {
                     </div>
                     <form className="mt-2 xl:ml-10 md:mx-auto w-full" onSubmit={handleSubmit}>
                         <input
-                            type="email"
-                            placeholder="Email"
-                            onChange={(e) => setState({...state, email: e.target.value})}
+                            type="text"
+                            placeholder="username"
+                            onChange={(e) => setState({...state, username: e.target.value})}
                             className="w-full p-2 border border-none outline outline-0 bg-slate-100 rounded mt-2"
                         />
                         <input
@@ -55,8 +55,7 @@ const Register = () => {
                             onChange={(e) => setState({...state, password: e.target.value})}
                             className="w-full p-2 border border-none outline outline-0 bg-slate-100 rounded mt-2"
                         />
-                        <button type="submit"
-                                className="w-full mt-5 py-2 px-4 bg-indigo-500 text-white rounded mt-2">Register
+                        <button type="submit" className="w-full mt-5 py-2 px-4 bg-indigo-500 text-white rounded mt-2">Register
                         </button>
                         <p className="text-slate-500 text-center">
                             Already have an account login <a href="/" className="text-indigo-500">here</a>
