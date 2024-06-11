@@ -44,8 +44,8 @@ const Login = () => {
                     </div>
                     <form className="mt-2 xl:ml-10 md:mx-auto w-full" onSubmit={handleSubmit}>
                         <input
-                            type="email"
-                            placeholder="Email"
+                            type="text"
+                            placeholder="Username"
                             onChange={(e) => setState({...state, email: e.target.value})}
                             className="w-full p-2 border border-none outline outline-0 bg-slate-100 rounded mt-2"
                         />
